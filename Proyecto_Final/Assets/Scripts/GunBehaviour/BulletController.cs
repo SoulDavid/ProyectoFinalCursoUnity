@@ -9,9 +9,9 @@ public class BulletController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     private IObjectPool<BulletController> bulletPool;
-    private Aim casterRayDirection;
+    private PlayerShot casterRayDirection;
 
-    public void SetPool(IObjectPool<BulletController> _bulletPool, Aim direction)
+    public void SetPool(IObjectPool<BulletController> _bulletPool, PlayerShot direction)
     {
         bulletPool = _bulletPool;
         casterRayDirection = direction;
@@ -25,6 +25,7 @@ public class BulletController : MonoBehaviour
 
     private void Update()
     {
+
     }
 
     private void FixedUpdate()

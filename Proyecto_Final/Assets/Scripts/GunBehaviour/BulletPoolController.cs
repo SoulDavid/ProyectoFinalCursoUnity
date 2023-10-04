@@ -11,7 +11,7 @@ public class BulletPoolController : MonoBehaviour
     private IObjectPool<BulletController> bulletPool;
 
     [SerializeField] private GameObject spawnBullet;
-    [SerializeField] private Aim rayAim;
+    [SerializeField] private PlayerShot rayAim;
 
     private void Awake()
     {
@@ -35,7 +35,7 @@ public class BulletPoolController : MonoBehaviour
     {
         bullet.gameObject.SetActive(true);
         bullet.transform.position = spawnBullet.transform.position;
-        bullet.transform.LookAt(rayAim.GetRay().GetPoint(0));
+        bullet.transform.rotation = rayAim.GetRayDirection();
     }
 
     private void OnRelease(BulletController bullet)
