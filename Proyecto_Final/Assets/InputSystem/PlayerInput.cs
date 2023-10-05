@@ -80,6 +80,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeToGun1"",
+                    ""type"": ""Button"",
+                    ""id"": ""d81cc165-2925-421a-8e90-83884020cdf2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeToGun2"",
+                    ""type"": ""Button"",
+                    ""id"": ""74b20e42-1d67-430a-8828-c36e94c53436"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -423,6 +441,50 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6249d216-ea37-4deb-b7be-de1f531ffd8a"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeToGun1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16f97186-e0a0-4080-bf4a-d6f92916c6dd"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeToGun1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24ab0287-2ec9-44f6-9cd6-57ece9486370"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeToGun2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0471e52e-2dca-4046-8566-961fd4ebb504"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeToGun2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -479,6 +541,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""3372614e-37c5-42ec-847d-262bf2babd02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeToGun1"",
+                    ""type"": ""Button"",
+                    ""id"": ""3acb6111-e442-4210-81b2-4e4962bffc2c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeToGun2"",
+                    ""type"": ""Button"",
+                    ""id"": ""07a517bf-f9c3-412d-aaf3-e132521bd257"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -738,6 +818,50 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""111ffbb0-6d60-4c75-a46f-40af521f247f"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeToGun1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e3fe856-fc58-465a-8247-7a3283fcff1c"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeToGun1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a15238e5-3b3a-40e8-8b5e-623ca87c625e"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeToGun2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8bf0aaf1-f8a9-4579-b5d1-6b6d4692a6e2"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeToGun2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -752,6 +876,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_ChangeToGun1 = m_Player.FindAction("ChangeToGun1", throwIfNotFound: true);
+        m_Player_ChangeToGun2 = m_Player.FindAction("ChangeToGun2", throwIfNotFound: true);
         // Player_Test
         m_Player_Test = asset.FindActionMap("Player_Test", throwIfNotFound: true);
         m_Player_Test_Movement = m_Player_Test.FindAction("Movement", throwIfNotFound: true);
@@ -760,6 +886,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_Test_Dash = m_Player_Test.FindAction("Dash", throwIfNotFound: true);
         m_Player_Test_Aim = m_Player_Test.FindAction("Aim", throwIfNotFound: true);
         m_Player_Test_Shoot = m_Player_Test.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Test_ChangeToGun1 = m_Player_Test.FindAction("ChangeToGun1", throwIfNotFound: true);
+        m_Player_Test_ChangeToGun2 = m_Player_Test.FindAction("ChangeToGun2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -827,6 +955,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_ChangeToGun1;
+    private readonly InputAction m_Player_ChangeToGun2;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -837,6 +967,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @ChangeToGun1 => m_Wrapper.m_Player_ChangeToGun1;
+        public InputAction @ChangeToGun2 => m_Wrapper.m_Player_ChangeToGun2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -864,6 +996,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @ChangeToGun1.started += instance.OnChangeToGun1;
+            @ChangeToGun1.performed += instance.OnChangeToGun1;
+            @ChangeToGun1.canceled += instance.OnChangeToGun1;
+            @ChangeToGun2.started += instance.OnChangeToGun2;
+            @ChangeToGun2.performed += instance.OnChangeToGun2;
+            @ChangeToGun2.canceled += instance.OnChangeToGun2;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -886,6 +1024,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @ChangeToGun1.started -= instance.OnChangeToGun1;
+            @ChangeToGun1.performed -= instance.OnChangeToGun1;
+            @ChangeToGun1.canceled -= instance.OnChangeToGun1;
+            @ChangeToGun2.started -= instance.OnChangeToGun2;
+            @ChangeToGun2.performed -= instance.OnChangeToGun2;
+            @ChangeToGun2.canceled -= instance.OnChangeToGun2;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -913,6 +1057,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Test_Dash;
     private readonly InputAction m_Player_Test_Aim;
     private readonly InputAction m_Player_Test_Shoot;
+    private readonly InputAction m_Player_Test_ChangeToGun1;
+    private readonly InputAction m_Player_Test_ChangeToGun2;
     public struct Player_TestActions
     {
         private @PlayerInput m_Wrapper;
@@ -923,6 +1069,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Test_Dash;
         public InputAction @Aim => m_Wrapper.m_Player_Test_Aim;
         public InputAction @Shoot => m_Wrapper.m_Player_Test_Shoot;
+        public InputAction @ChangeToGun1 => m_Wrapper.m_Player_Test_ChangeToGun1;
+        public InputAction @ChangeToGun2 => m_Wrapper.m_Player_Test_ChangeToGun2;
         public InputActionMap Get() { return m_Wrapper.m_Player_Test; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -950,6 +1098,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @ChangeToGun1.started += instance.OnChangeToGun1;
+            @ChangeToGun1.performed += instance.OnChangeToGun1;
+            @ChangeToGun1.canceled += instance.OnChangeToGun1;
+            @ChangeToGun2.started += instance.OnChangeToGun2;
+            @ChangeToGun2.performed += instance.OnChangeToGun2;
+            @ChangeToGun2.canceled += instance.OnChangeToGun2;
         }
 
         private void UnregisterCallbacks(IPlayer_TestActions instance)
@@ -972,6 +1126,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @ChangeToGun1.started -= instance.OnChangeToGun1;
+            @ChangeToGun1.performed -= instance.OnChangeToGun1;
+            @ChangeToGun1.canceled -= instance.OnChangeToGun1;
+            @ChangeToGun2.started -= instance.OnChangeToGun2;
+            @ChangeToGun2.performed -= instance.OnChangeToGun2;
+            @ChangeToGun2.canceled -= instance.OnChangeToGun2;
         }
 
         public void RemoveCallbacks(IPlayer_TestActions instance)
@@ -997,6 +1157,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnChangeToGun1(InputAction.CallbackContext context);
+        void OnChangeToGun2(InputAction.CallbackContext context);
     }
     public interface IPlayer_TestActions
     {
@@ -1006,5 +1168,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnChangeToGun1(InputAction.CallbackContext context);
+        void OnChangeToGun2(InputAction.CallbackContext context);
     }
 }

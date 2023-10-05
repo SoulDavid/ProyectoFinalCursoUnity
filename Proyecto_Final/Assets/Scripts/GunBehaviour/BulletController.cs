@@ -11,10 +11,10 @@ public class BulletController : MonoBehaviour
     private IObjectPool<BulletController> bulletPool;
     private PlayerShot casterRayDirection;
 
-    public void SetPool(IObjectPool<BulletController> _bulletPool, PlayerShot direction)
+    public void SetPool(IObjectPool<BulletController> _bulletPool)//, PlayerShot direction)
     {
         bulletPool = _bulletPool;
-        casterRayDirection = direction;
+        //casterRayDirection = direction;
     }
 
     // Start is called before the first frame update
