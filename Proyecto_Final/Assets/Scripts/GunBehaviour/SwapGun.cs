@@ -8,17 +8,22 @@ public class SwapGun : MonoBehaviour
 {
     [SerializeField] private Image gunFrame1;
     [SerializeField] private Image gunFrame2;
+    [SerializeField] private Image gunFrame3;
 
     [SerializeField] private GameObject gun1;
     [SerializeField] private GameObject gun2;
+    [SerializeField] private GameObject gun3;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.SetGun(0);
         gunFrame1.color = Color.yellow;
         gunFrame2.color = Color.black;
+        gunFrame3.color = Color.black;
         gun1.SetActive(true);
         gun2.SetActive(false);
+        gun3.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,8 +39,10 @@ public class SwapGun : MonoBehaviour
             GameManager.Instance.SetGun(0);
             gunFrame1.color = Color.yellow;
             gunFrame2.color = Color.black;
+            gunFrame3.color = Color.black;
             gun1.SetActive(true);
             gun2.SetActive(false);
+            gun3.SetActive(false);
         }
     }
 
@@ -46,7 +53,23 @@ public class SwapGun : MonoBehaviour
             GameManager.Instance.SetGun(1);
             gunFrame2.color = Color.yellow;
             gunFrame1.color = Color.black;
+            gunFrame3.color = Color.black;
             gun2.SetActive(true);
+            gun1.SetActive(false);
+            gun3.SetActive(false);
+        }
+    }
+
+    public void ChangeToGun3(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameManager.Instance.SetGun(2);
+            gunFrame3.color = Color.yellow;
+            gunFrame2.color = Color.black;
+            gunFrame1.color = Color.black;
+            gun3.SetActive(true);
+            gun2.SetActive(false);
             gun1.SetActive(false);
         }
     }

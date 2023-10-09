@@ -56,14 +56,14 @@ public class AimGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Guardar la posición del mouse
-        mousePosition = Mouse.current.position.ReadValue();
-        //Valor para precisar la posición ideal del raton
-        warpPosition = mousePosition + bias + sensitivity * Time.deltaTime * controllerInput;
-        //Mantener el cursor en la pantalla de juego (de esta manera no se sale de los limites)
-        overflow = new Vector2(warpPosition.x % 1, warpPosition.y % 1);
-        //Asignamos la posición al raton para que se mueva
-        Mouse.current.WarpCursorPosition(warpPosition);
+        ////Guardar la posición del mouse
+        //mousePosition = Mouse.current.position.ReadValue();
+        ////Valor para precisar la posición ideal del raton
+        //warpPosition = mousePosition + bias + sensitivity * Time.deltaTime * controllerInput;
+        ////Mantener el cursor en la pantalla de juego (de esta manera no se sale de los limites)
+        //overflow = new Vector2(warpPosition.x % 1, warpPosition.y % 1);
+        ////Asignamos la posición al raton para que se mueva
+        //Mouse.current.WarpCursorPosition(warpPosition);
 
         ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         guns[GameManager.Instance.GetGun()].transform.LookAt(ray.GetPoint(10));

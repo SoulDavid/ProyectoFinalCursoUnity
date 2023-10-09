@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float inputMovement;
+    private Vector2 inputMovement;
     private float inputRotation;
     private bool playerIsDashing;
     [SerializeField] private float speed = 5f;
@@ -27,13 +27,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 direction = transform.forward * inputMovement;
+        Vector3 direction = transform.forward * inputMovement.y + 
+            transform.right * inputMovement.x;
+
         rb.velocity = (direction.normalized * speed) + (transform.up * rb.velocity.y);
     }
 
     public void GetMovementPlayer(InputAction.CallbackContext context)
     {
-        inputMovement = context.ReadValue<float>();
+        inputMovement = context.ReadValue<Vector2>();
     }
 
     public void GetRotationPlayer(InputAction.CallbackContext context)
