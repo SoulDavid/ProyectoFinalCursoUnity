@@ -71,8 +71,6 @@ public class HookController : MonoBehaviour
 
     private void Collision(GameObject col)
     {
-
-        Debug.Log("Ha sido destruido");
         speed = returnSpeed;
         hasCollided = true;
 

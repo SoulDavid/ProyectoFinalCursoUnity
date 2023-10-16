@@ -9,6 +9,7 @@ using TMPro;
 public class PlayerShot : MonoBehaviour
 {
     #region Variables de RayGun
+    [Header("RayGun Properties")]
     /// <summary>
     /// Objeto que referencia al gameobject vacio donde spawneara el rayo
     /// </summary>
@@ -19,9 +20,11 @@ public class PlayerShot : MonoBehaviour
     [SerializeField] private GameObject sparkleHitCollisionWithMetalWall;
 
     [SerializeField] private ParticleSystem shotRayParticles;
+    [SerializeField] private int damageRayGun;
     #endregion
 
     #region Variables de BulletGun
+    [Header("Bullet Gun Properties")]
     /// <summary>
     /// Objeto que referencia al gameobject vacio donde spawneara la bala
     /// </summary>
@@ -37,6 +40,7 @@ public class PlayerShot : MonoBehaviour
     [SerializeField] private ParticleSystem shotBulletParticle;
     #endregion
 
+    [Header("Hook Properties")]
     [SerializeField] private GameObject hookPrefab;
     [SerializeField] private GameObject hookSpawn;
 
@@ -89,6 +93,10 @@ public class PlayerShot : MonoBehaviour
                         actualAmmo--;
                         textAmmo.text = actualAmmo.ToString() + " / " + maxAmmo.ToString();
                     }
+                    else if(actualAmmo == 0)
+                    {
+                        Recharge();
+                    }
 
                     break;
 
@@ -117,14 +125,27 @@ public class PlayerShot : MonoBehaviour
                 GameObject sparkles = Instantiate(sparkleHitCollisionWithMetalWall, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(sparkles, 0.4f);
             }
+            if(hit.transform.gameObject.CompareTag("Light"))
+            {
+                hit.transform.gameObject.GetComponent<LightHealth>().Damage(damageRayGun);
+            }
+            if(hit.transform.gameObject.CompareTag("Enemy"))
+            {
+                Destroy(hit.transform.gameObject);
+            }
         }
+    }
+
+    private void Recharge()
+    {
+        actualAmmo = maxAmmo;
     }
 
     public void Recharge(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            actualAmmo = maxAmmo;
+            Recharge();
         }
     }
 
@@ -138,7 +159,7 @@ public class PlayerShot : MonoBehaviour
         textAmmo.text = actualAmmo.ToString() + " / " + maxAmmo.ToString();
     }
 
-
+    #region BulletPool Functions
     private BulletController CreateBullet()
     {
         BulletController _bullet = Instantiate(bullet, spawnBulletGun.transform.position, transform.rotation);
@@ -162,4 +183,5 @@ public class PlayerShot : MonoBehaviour
     {
         Destroy(_bullet.gameObject);
     }
+    #endregion
 }

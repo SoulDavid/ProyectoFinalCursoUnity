@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector2 inputMovement;
     private float inputRotation;
-    private bool playerIsDashing;
     [SerializeField] private float speed = 5f;
     [SerializeField] private LayerMask layerGround;
     [SerializeField] private Transform floorDetector;

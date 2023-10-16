@@ -7,14 +7,14 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField] private float speedBullet;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private int damageBullet;
 
     private IObjectPool<BulletController> bulletPool;
     private PlayerShot casterRayDirection;
 
-    public void SetPool(IObjectPool<BulletController> _bulletPool)//, PlayerShot direction)
+    public void SetPool(IObjectPool<BulletController> _bulletPool)
     {
         bulletPool = _bulletPool;
-        //casterRayDirection = direction;
     }
 
     // Start is called before the first frame update
@@ -33,8 +33,22 @@ public class BulletController : MonoBehaviour
         rb.velocity = transform.forward * speedBullet;
     }
 
-    private void OnBecameInvisible()
+    private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.CompareTag("Light"))
+        {
+            collision.gameObject.GetComponent<LightHealth>().Damage(damageBullet);
+        }
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+        }
+
         bulletPool.Release(this);
     }
+
+    //private void OnBecameInvisible()
+    //{
+    //    bulletPool.Release(this);
+    //}
 }
