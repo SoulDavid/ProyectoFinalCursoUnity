@@ -116,6 +116,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenMap"",
+                    ""type"": ""Button"",
+                    ""id"": ""e662b862-2437-472e-ac0d-313a43d04fb1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HideOrShowCanvasGuns"",
+                    ""type"": ""Button"",
+                    ""id"": ""95c66725-8538-44bb-b8cb-6417aee9530b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -503,6 +521,50 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""ChangeToGun3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42b836cb-988d-4e09-9fde-0cf69c16be58"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cda8e0d9-9774-43cd-b8c5-00e1e4e04a02"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db8b3b71-6132-4d76-9412-bedc6456a01b"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HideOrShowCanvasGuns"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""352cef01-e02d-4e59-b21c-77c149ed4166"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HideOrShowCanvasGuns"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -521,6 +583,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_ChangeToGun2 = m_Player.FindAction("ChangeToGun2", throwIfNotFound: true);
         m_Player_ChangeToGun3 = m_Player.FindAction("ChangeToGun3", throwIfNotFound: true);
         m_Player_Recharge = m_Player.FindAction("Recharge", throwIfNotFound: true);
+        m_Player_OpenMap = m_Player.FindAction("OpenMap", throwIfNotFound: true);
+        m_Player_HideOrShowCanvasGuns = m_Player.FindAction("HideOrShowCanvasGuns", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -592,6 +656,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ChangeToGun2;
     private readonly InputAction m_Player_ChangeToGun3;
     private readonly InputAction m_Player_Recharge;
+    private readonly InputAction m_Player_OpenMap;
+    private readonly InputAction m_Player_HideOrShowCanvasGuns;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -606,6 +672,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @ChangeToGun2 => m_Wrapper.m_Player_ChangeToGun2;
         public InputAction @ChangeToGun3 => m_Wrapper.m_Player_ChangeToGun3;
         public InputAction @Recharge => m_Wrapper.m_Player_Recharge;
+        public InputAction @OpenMap => m_Wrapper.m_Player_OpenMap;
+        public InputAction @HideOrShowCanvasGuns => m_Wrapper.m_Player_HideOrShowCanvasGuns;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -645,6 +713,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Recharge.started += instance.OnRecharge;
             @Recharge.performed += instance.OnRecharge;
             @Recharge.canceled += instance.OnRecharge;
+            @OpenMap.started += instance.OnOpenMap;
+            @OpenMap.performed += instance.OnOpenMap;
+            @OpenMap.canceled += instance.OnOpenMap;
+            @HideOrShowCanvasGuns.started += instance.OnHideOrShowCanvasGuns;
+            @HideOrShowCanvasGuns.performed += instance.OnHideOrShowCanvasGuns;
+            @HideOrShowCanvasGuns.canceled += instance.OnHideOrShowCanvasGuns;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -679,6 +753,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Recharge.started -= instance.OnRecharge;
             @Recharge.performed -= instance.OnRecharge;
             @Recharge.canceled -= instance.OnRecharge;
+            @OpenMap.started -= instance.OnOpenMap;
+            @OpenMap.performed -= instance.OnOpenMap;
+            @OpenMap.canceled -= instance.OnOpenMap;
+            @HideOrShowCanvasGuns.started -= instance.OnHideOrShowCanvasGuns;
+            @HideOrShowCanvasGuns.performed -= instance.OnHideOrShowCanvasGuns;
+            @HideOrShowCanvasGuns.canceled -= instance.OnHideOrShowCanvasGuns;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -708,5 +788,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnChangeToGun2(InputAction.CallbackContext context);
         void OnChangeToGun3(InputAction.CallbackContext context);
         void OnRecharge(InputAction.CallbackContext context);
+        void OnOpenMap(InputAction.CallbackContext context);
+        void OnHideOrShowCanvasGuns(InputAction.CallbackContext context);
     }
 }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6404035378715834661}
   - component: {fileID: 3382301327142842520}
   - component: {fileID: 1403191085435700157}
+  - component: {fileID: 3149836698362206165}
   - component: {fileID: 4336786682375424096}
   - component: {fileID: 3509779371327750400}
   - component: {fileID: 2710074999608839207}
@@ -116,6 +117,9 @@ MonoBehaviour:
   layerGround:
     serializedVersion: 2
     m_Bits: 64
+  layerFloor:
+    serializedVersion: 2
+    m_Bits: 512
   floorDetector: {fileID: 1676234653910486124}
 --- !u!114 &6404035378715834661
 MonoBehaviour:
@@ -180,6 +184,19 @@ MonoBehaviour:
   - {fileID: 8187809579531092635}
   - {fileID: 5638772427153856249}
   - {fileID: 7659354928066856235}
+--- !u!114 &3149836698362206165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734161153951074608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a04ff72b7639074d897af4d9dd0bc04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPlayer: {fileID: 0}
 --- !u!114 &4336786682375424096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +419,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7e104890-c87f-48f6-b535-c4677ebaf901
     m_ActionName: Player/ChangeToGun3[/Keyboard/3,/XInputControllerWindows/dpad/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e662b862-2437-472e-ac0d-313a43d04fb1
+    m_ActionName: Player/OpenMap[/Keyboard/x]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -454,9 +475,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.798223
+  m_Height: 2.1007705
   m_Direction: 1
-  m_Center: {x: 0, y: 0.43772435, z: 0}
+  m_Center: {x: 0, y: 0.7864506, z: 0}
 --- !u!1 &3156465198271763823
 GameObject:
   m_ObjectHideFlags: 0

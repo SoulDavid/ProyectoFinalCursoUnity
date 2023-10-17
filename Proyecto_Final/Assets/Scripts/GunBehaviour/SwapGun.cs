@@ -14,6 +14,11 @@ public class SwapGun : MonoBehaviour
     [SerializeField] private GameObject gun2;
     [SerializeField] private GameObject gun3;
 
+    [SerializeField] private GameObject map;
+    [SerializeField] private bool hideMap;
+    [SerializeField] private bool hideGuns;
+    [SerializeField] private GameObject gunsCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +29,8 @@ public class SwapGun : MonoBehaviour
         gun1.SetActive(true);
         gun2.SetActive(false);
         gun3.SetActive(false);
+        gunsCanvas.SetActive(false);
+        map.SetActive(false);
     }
 
     // Update is called once per frame
@@ -71,6 +78,28 @@ public class SwapGun : MonoBehaviour
             gun3.SetActive(true);
             gun2.SetActive(false);
             gun1.SetActive(false);
+        }
+    }
+
+    public void HideOrShowGuns(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if (!hideGuns) hideGuns = true;
+            else hideGuns = false;
+
+            gunsCanvas.SetActive(hideGuns);
+        }
+    }
+
+    public void UseObject(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if (!hideMap) hideMap = true;
+            else hideMap = false;
+
+            map.SetActive(hideMap);
         }
     }
 }

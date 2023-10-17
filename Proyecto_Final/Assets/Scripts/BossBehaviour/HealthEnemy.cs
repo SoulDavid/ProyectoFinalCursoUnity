@@ -30,7 +30,7 @@ public class HealthEnemy : MonoBehaviour
 
         if(actualHealth <= 80/*maxHealth/2*/ && !isInPhase2)
         {
-            transform.position = phase2Position.position;
+            transform.position = Vector3.MoveTowards(transform.position, phase2Position.position, 2 * Time.deltaTime);
             spawnEnemies.SetActive(true);
             GetComponent<Phase2BossEnemiesSpawn>().enabled = true;
         }

@@ -18,6 +18,7 @@ public class PlatformBehaviour : MonoBehaviour
     {
         if(isActiveToMove)
         {
+            Debug.Log(transform.GetChild(0));
             transform.GetChild(0).position = Vector3.MoveTowards(transform.GetChild(0).position, transform.GetChild(1).position, speed * Time.deltaTime);
         }
     }

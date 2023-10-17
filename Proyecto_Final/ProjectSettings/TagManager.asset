@@ -7,6 +7,9 @@ TagManager:
   - MetalWall
   - Hook
   - Light
+  - Enemy
+  - LavaFloor
+  - Spawn
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - UI
   - Ground
   - PlayerPoint
-  - 
-  - 
+  - Ceiling
+  - Floor
   - 
   - 
   - 
