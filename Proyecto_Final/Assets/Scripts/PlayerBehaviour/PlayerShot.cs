@@ -118,8 +118,6 @@ public class PlayerShot : MonoBehaviour
 
         if (Physics.Raycast(spawnRay.transform.position, aimDirection.GetRay().direction, out hit, 200))
         {
-            Debug.Log(hit.transform.name);
-
             if (hit.transform.gameObject.CompareTag("MetalWall"))
             {
                 GameObject sparkles = Instantiate(sparkleHitCollisionWithMetalWall, hit.point, Quaternion.LookRotation(hit.normal));
@@ -131,7 +129,7 @@ public class PlayerShot : MonoBehaviour
             }
             if(hit.transform.gameObject.CompareTag("Enemy"))
             {
-                Destroy(hit.transform.gameObject);
+                hit.transform.gameObject.GetComponent<EnemyIAController>().Destroy();
             }
         }
     }
@@ -149,7 +147,7 @@ public class PlayerShot : MonoBehaviour
         }
     }
 
-    public void UpdateCanvasAmmoRayGun(InputAction.CallbackContext context)
+    public void UpdateCanvasAmmoInfinite(InputAction.CallbackContext context)
     {    
         textAmmo.text = "\u221E" + " / " + "\u221E";
     }

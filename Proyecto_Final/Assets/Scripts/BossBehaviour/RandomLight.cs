@@ -9,7 +9,7 @@ public class RandomLight : MonoBehaviour
     [SerializeField] private Material greenMaterial;
     [SerializeField] private Material redMaterial;
 
-    private HealthEnemy enemyHealth;
+    [SerializeField] private HealthEnemy enemyHealth;
     private int actualNumber = -1;
     int new_random_number = -1;
 
@@ -17,7 +17,6 @@ public class RandomLight : MonoBehaviour
     void Start()
     {
         enemyHealth = GetComponent<HealthEnemy>();
-        RandomLights();
     }
 
     // Update is called once per frame

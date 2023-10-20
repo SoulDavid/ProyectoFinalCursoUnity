@@ -41,7 +41,7 @@ public class BulletController : MonoBehaviour
         }
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyIAController>().Destroy();
         }
 
         bulletPool.Release(this);

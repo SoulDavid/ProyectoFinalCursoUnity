@@ -6,10 +6,12 @@ public class PlatformBehaviour : MonoBehaviour
 {
     private bool isActiveToMove;
     [SerializeField] private float speed;
+    private Collider boxCollider;
 
     // Start is called before the first frame update
     void Start()
     {
+        boxCollider = transform.GetChild(0).GetComponent<Collider>();
         isActiveToMove = false;
     }
 
@@ -18,8 +20,8 @@ public class PlatformBehaviour : MonoBehaviour
     {
         if(isActiveToMove)
         {
-            Debug.Log(transform.GetChild(0));
-            transform.GetChild(0).position = Vector3.MoveTowards(transform.GetChild(0).position, transform.GetChild(1).position, speed * Time.deltaTime);
+            boxCollider.enabled = false;
+            transform.GetChild(0).position = Vector3.MoveTowards(transform.GetChild(0).position, transform.GetChild(1).position, speed * Time.deltaTime);      
         }
     }
 

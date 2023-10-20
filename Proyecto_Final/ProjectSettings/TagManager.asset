@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - LavaFloor
   - Spawn
+  - Ball
+  - SpawnBall
   layers:
   - Default
   - TransparentFX

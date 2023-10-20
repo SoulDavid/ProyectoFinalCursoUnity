@@ -11,34 +11,26 @@ public class Phase2BossEnemiesSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        timeBetweenSpawn += Time.deltaTime;
+        InvokeRepeating("SpawnEnemies", 2, 2);
+    }
 
-        if (timeBetweenSpawn >= 2f)
+    private void OnDisable()
+    {
+        CancelInvoke();
+    }
+
+
+    private void SpawnEnemies()
+    {
+        if(GetComponent<HealthEnemy>().get_isInPhase2())
         {
             int numberSpawn = Random.Range(0, spawnEnemies.Length);
-            Instantiate(enemyPrefab, spawnEnemies[numberSpawn].transform.position, Quaternion.identity);
-            timeBetweenSpawn = 0;
+            Instantiate(enemyPrefab, spawnEnemies[numberSpawn].transform.position, Quaternion.identity, this.transform);
         }
-    }
-
-    //Se activaara cuando el jugador de al boton y se suba de nuevo la pantalla
-    public void StartSpawn()
-    {
-        //while(true)
-        //{
-        //    timeBetweenSpawn += Time.deltaTime;
-
-        //    //if(timeBetweenSpawn >= 2f)
-        //    //{
-        //    //    int numberSpawn = Random.Range(0, spawnEnemies.Length);
-        //    //    Instantiate(enemyPrefab, spawnEnemies[numberSpawn].transform.position, Quaternion.identity);
-        //    //    timeBetweenSpawn = 0;
-        //    //}
-        //}
     }
 }
