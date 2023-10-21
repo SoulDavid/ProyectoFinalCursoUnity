@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector2 inputMovement;
     private float inputRotation;
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed;
+    [SerializeField] private float speedRotation;
     [SerializeField] private LayerMask layerGround;
     [SerializeField] private Transform floorDetector;
     private Rigidbody rb;
@@ -21,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * inputRotation);
+        transform.Rotate(Vector3.up * inputRotation * speedRotation);
     }
 
     private void FixedUpdate()
@@ -35,11 +36,18 @@ public class PlayerMovement : MonoBehaviour
     public void GetMovementPlayer(InputAction.CallbackContext context)
     {
         inputMovement = context.ReadValue<Vector2>();
+
+        if(inputMovement != Vector2.zero)
+        {
+            speed = GameManager.Instance.GetSpeed();
+        }
     }
 
     public void GetRotationPlayer(InputAction.CallbackContext context)
     {
         inputRotation = context.ReadValue<float>();
+
+        speedRotation = GameManager.Instance.GetSpeedRotation();
     }
 
     public void GetDashInteraction(InputAction.CallbackContext context)

@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: e9514aedc3e61b54c8127068e524ba6e
+  - enabled: 1
+    path: Assets/Scenes/Estructura de juego real/Menu.unity
+    guid: 69d750363d1702545b82846d463a2e7d
+  - enabled: 1
+    path: Assets/Scenes/Estructura de juego real/Credits.unity
+    guid: 2fe29e650cc1e6f4aaa0465522df27bf
   m_configObjects: {}

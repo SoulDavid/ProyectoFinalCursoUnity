@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthEnemy : MonoBehaviour
 {
@@ -43,8 +44,8 @@ public class HealthEnemy : MonoBehaviour
 
         if(actualHealth <= 0)
         {
-            GetComponent<Phase2BossEnemiesSpawn>().enabled = false;
-            anim.SetBool("death", true);
+            StartCoroutine(EndGame());
+
         }
         //Comprobar que la vida del enemigo es menor a 0, y saltar la muerte del personaje
     }
@@ -82,5 +83,13 @@ public class HealthEnemy : MonoBehaviour
         spawnEnemies.SetActive(false);
         transform.position = start_position;
         GetComponent<Phase2BossEnemiesSpawn>().enabled = false;
+    }
+
+    private IEnumerator EndGame()
+    {
+        GetComponent<Phase2BossEnemiesSpawn>().enabled = false;
+        anim.SetBool("death", true);
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("Credits");
     }
 }
