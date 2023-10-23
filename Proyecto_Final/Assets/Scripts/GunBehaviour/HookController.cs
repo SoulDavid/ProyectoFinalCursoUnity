@@ -9,7 +9,10 @@ public class HookController : MonoBehaviour
     [SerializeField] private float speed, returnSpeed, range, stopRange;
 
     private Transform caster, collidedWidth;
+    private PlayerShootingHook scriptPlayerHook;
     [SerializeField] private LineRenderer line;
+    [SerializeField] private float timeLimit = 3f;
+    private float actualTime;
     private bool hasCollided;
     
     // Start is called before the first frame update
@@ -18,14 +21,17 @@ public class HookController : MonoBehaviour
         line = transform.GetChild(1).GetComponent<LineRenderer>();
     }
 
-    public void Init(Transform _caster)
+    public void Init(Transform _caster, PlayerShootingHook _scriptPlayerHook)
     {
         caster = _caster;
+        scriptPlayerHook = _scriptPlayerHook;
+        actualTime = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        actualTime += Time.deltaTime;
         if (caster)
         {
             line.SetPosition(0, caster.position);
@@ -38,13 +44,16 @@ public class HookController : MonoBehaviour
                 float dist = Vector3.Distance(transform.position, caster.position);
 
                 if (dist < stopRange)
+                {
+                    scriptPlayerHook.ResetShooting();
                     Destroy(gameObject);
+                }
             }
             else
             {
                 float dist = Vector3.Distance(transform.position, caster.position);
 
-                if (dist > range)
+                if (dist > range || actualTime >= timeLimit)
                 {
                     Collision(null);
                 }
@@ -56,6 +65,7 @@ public class HookController : MonoBehaviour
         }
         else
         {
+            scriptPlayerHook.ResetShooting();
             Destroy(gameObject);
         }
 

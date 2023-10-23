@@ -21,6 +21,8 @@ public class PlayerShot : MonoBehaviour
 
     [SerializeField] private ParticleSystem shotRayParticles;
     [SerializeField] private int damageRayGun;
+
+    private LineRenderer lineRenderer;
     #endregion
 
     #region Variables de BulletGun
@@ -57,6 +59,8 @@ public class PlayerShot : MonoBehaviour
             OnDestroyBullet,
             maxSize: maxAmmo
             );
+
+        lineRenderer = GetComponent<LineRenderer>();
     }
 
     // Start is called before the first frame update
@@ -102,7 +106,7 @@ public class PlayerShot : MonoBehaviour
 
                 case 2:
                     var hook = Instantiate(hookPrefab, hookSpawn.transform.position, hookSpawn.transform.rotation);
-                    hook.GetComponent<HookController>().Init(hookSpawn.transform);
+                    //hook.GetComponent<HookController>().Init(hookSpawn.transform, this);
                     Debug.Log("Se ha creado");
                     break;
             }
@@ -112,12 +116,18 @@ public class PlayerShot : MonoBehaviour
     private IEnumerator shotRayGun()
     {
         shotRayParticles.Play();
+
         yield return new WaitForSeconds(.3f);
+
+        lineRenderer.enabled = true;
+        lineRenderer.SetPosition(0, spawnRay.transform.position);
+
         RaycastHit hit;
         Debug.DrawRay(spawnRay.transform.position, aimDirection.GetRay().direction * 200, Color.red);
 
         if (Physics.Raycast(spawnRay.transform.position, aimDirection.GetRay().direction, out hit, 200))
         {
+            lineRenderer.SetPosition(1, hit.point);
             if (hit.transform.gameObject.CompareTag("MetalWall"))
             {
                 GameObject sparkles = Instantiate(sparkleHitCollisionWithMetalWall, hit.point, Quaternion.LookRotation(hit.normal));
@@ -132,6 +142,9 @@ public class PlayerShot : MonoBehaviour
                 hit.transform.gameObject.GetComponent<EnemyIAController>().Destroy();
             }
         }
+
+        yield return new WaitForSeconds(.5f);
+        lineRenderer.enabled = false;
     }
 
     private void Recharge()

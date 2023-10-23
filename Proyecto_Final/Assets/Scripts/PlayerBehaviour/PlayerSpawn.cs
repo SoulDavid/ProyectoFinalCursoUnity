@@ -13,7 +13,6 @@ public class PlayerSpawn : MonoBehaviour
     {
         ball = GameObject.FindGameObjectWithTag("Ball");
         rb = GetComponent<Rigidbody>();
-        //ball.SetActive(false);
     }
 
     // Update is called once per frame

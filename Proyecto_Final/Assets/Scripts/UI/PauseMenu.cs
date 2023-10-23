@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using TMPro;
 
 public class PauseMenu : MonoBehaviour
@@ -13,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private Slider sliderSensitivity;
     [SerializeField] private TMP_Text textSensitivity;
+    [SerializeField] private AudioMixer mixer;
 
 
     // Start is called before the first frame update
@@ -75,4 +77,18 @@ public class PauseMenu : MonoBehaviour
         textSensitivity.text = sliderSensitivity.value.ToString("F1");
     }
 
+    public void volumeMaster(float volume)
+    {
+        mixer.SetFloat("volumeMaster", volume);
+    }
+
+    public void volumeMusic(float volume)
+    {
+        mixer.SetFloat("volumeMusic", volume);
+    }
+
+    public void volumeSfx(float volume)
+    {
+        mixer.SetFloat("volumeSFX", volume);
+    }
 }
