@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Slider sliderSensitivity;
     [SerializeField] private TMP_Text textSensitivity;
     [SerializeField] private AudioMixer mixer;
+    [SerializeField] private GameObject controlsPanel;
 
 
     // Start is called before the first frame update
@@ -50,6 +51,7 @@ public class PauseMenu : MonoBehaviour
     {
         playerInput.ActivateInput();
         startMenu.SetActive(false);
+        canvasPlayer.SetActive(true);
         Time.timeScale = 1;
     }
 
@@ -57,6 +59,7 @@ public class PauseMenu : MonoBehaviour
     {
         playerInput.ActivateInput();
         startMenu.SetActive(false);
+        canvasPlayer.SetActive(true);
         Time.timeScale = 1;
     }
 
@@ -69,6 +72,18 @@ public class PauseMenu : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void ShowControls()
+    {
+        startMenu.SetActive(false);
+        controlsPanel.SetActive(true);
+    }
+
+    public void ExitControls()
+    {
+        controlsPanel.SetActive(false);
+        startMenu.SetActive(true);
     }
 
     public void SubmitSliderSpeedRotation()

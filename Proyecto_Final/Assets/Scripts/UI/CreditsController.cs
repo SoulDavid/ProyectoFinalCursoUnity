@@ -89,6 +89,7 @@ public class CreditsController : MonoBehaviour
             else
             {
                 yield return new WaitForSeconds(time);
+                MusicManager.Instance.SwapMusic(3);
                 SceneManager.LoadScene("Menu");
             }
 

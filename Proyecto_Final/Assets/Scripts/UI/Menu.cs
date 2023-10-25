@@ -8,7 +8,7 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        MusicManager.Instance.SwapMusic(3);
     }
 
     // Update is called once per frame
@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour
 
     public void PassToTheGame()
     {
+        MusicManager.Instance.SwapMusic(0);
         SceneManager.LoadScene("Game");
     }
 }

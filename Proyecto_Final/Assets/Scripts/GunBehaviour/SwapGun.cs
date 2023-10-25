@@ -6,14 +6,17 @@ using UnityEngine.UI;
 
 public class SwapGun : MonoBehaviour
 {
+    [Header("Frames de las armas")]
     [SerializeField] private Image gunFrame1;
     [SerializeField] private Image gunFrame2;
     [SerializeField] private Image gunFrame3;
 
+    [Header("Objetos de las Armas")]
     [SerializeField] private GameObject gun1;
     [SerializeField] private GameObject gun2;
     [SerializeField] private GameObject gun3;
 
+    [Header("Referencias del canvas")]
     [SerializeField] private GameObject map;
     [SerializeField] private bool hideMap;
     [SerializeField] private bool hideGuns;

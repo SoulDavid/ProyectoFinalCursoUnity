@@ -598,34 +598,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""MenuController"",
-            ""id"": ""81c28130-245e-47a9-a325-7bd0eccf0bec"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""6147b846-285d-4f57-9bd8-2c10cb1011b6"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""b6f5de68-ae86-40d2-99af-b13b8f5de429"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": []
@@ -645,9 +617,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_OpenMap = m_Player.FindAction("OpenMap", throwIfNotFound: true);
         m_Player_HideOrShowCanvasGuns = m_Player.FindAction("HideOrShowCanvasGuns", throwIfNotFound: true);
         m_Player_PauseMenu = m_Player.FindAction("PauseMenu", throwIfNotFound: true);
-        // MenuController
-        m_MenuController = asset.FindActionMap("MenuController", throwIfNotFound: true);
-        m_MenuController_Newaction = m_MenuController.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -847,52 +816,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-
-    // MenuController
-    private readonly InputActionMap m_MenuController;
-    private List<IMenuControllerActions> m_MenuControllerActionsCallbackInterfaces = new List<IMenuControllerActions>();
-    private readonly InputAction m_MenuController_Newaction;
-    public struct MenuControllerActions
-    {
-        private @PlayerControls m_Wrapper;
-        public MenuControllerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_MenuController_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_MenuController; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MenuControllerActions set) { return set.Get(); }
-        public void AddCallbacks(IMenuControllerActions instance)
-        {
-            if (instance == null || m_Wrapper.m_MenuControllerActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MenuControllerActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
-        }
-
-        private void UnregisterCallbacks(IMenuControllerActions instance)
-        {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
-        }
-
-        public void RemoveCallbacks(IMenuControllerActions instance)
-        {
-            if (m_Wrapper.m_MenuControllerActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IMenuControllerActions instance)
-        {
-            foreach (var item in m_Wrapper.m_MenuControllerActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_MenuControllerActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public MenuControllerActions @MenuController => new MenuControllerActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -908,9 +831,5 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnOpenMap(InputAction.CallbackContext context);
         void OnHideOrShowCanvasGuns(InputAction.CallbackContext context);
         void OnPauseMenu(InputAction.CallbackContext context);
-    }
-    public interface IMenuControllerActions
-    {
-        void OnNewaction(InputAction.CallbackContext context);
     }
 }

@@ -16,7 +16,7 @@ public class AimGun : MonoBehaviour
     /// <summary>
     /// Vector que recoge cuando el jugador ha tocado el joystick derecho
     /// </summary>
-    Vector2 controllerInput;
+    [SerializeField] Vector2 controllerInput;
     /// <summary>
     /// Posición para precisar el lugar donde se encuentra el raton
     /// </summary>
@@ -32,7 +32,7 @@ public class AimGun : MonoBehaviour
 
     [Tooltip("Números más altos para un mayor movimiento del mouse al presionar el joystick. \n" +
          "Advertencia: el movimiento en diagonal pierde movimiento con poca sensibilidad al igual que pasa con el movimiento en 8 direcciones (<1000)")]
-    [SerializeField] private Vector2 sensitivity = new Vector2(1000f, 1000f);
+    [SerializeField] private Vector2 sensitivity = new Vector2(1500f, 1500f);
 
     /// <summary>
     /// Variable que almacena el siguiente frame
@@ -56,14 +56,20 @@ public class AimGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ////Guardar la posición del mouse
-        //mousePosition = Mouse.current.position.ReadValue();
-        ////Valor para precisar la posición ideal del raton
-        //warpPosition = mousePosition + bias + sensitivity * Time.deltaTime * controllerInput;
-        ////Mantener el cursor en la pantalla de juego (de esta manera no se sale de los limites)
-        //overflow = new Vector2(warpPosition.x % 1, warpPosition.y % 1);
-        ////Asignamos la posición al raton para que se mueva
-        //Mouse.current.WarpCursorPosition(warpPosition);
+        if(controllerInput!=Vector2.zero)
+        {
+            //Guardar la posición del mouse
+            mousePosition = Mouse.current.position.ReadValue();
+            //Valor para precisar la posición ideal del raton
+            warpPosition = mousePosition + bias + overflow + sensitivity * Time.deltaTime * controllerInput;
+
+            warpPosition = new Vector2(Mathf.Clamp(warpPosition.x, 0, Screen.width), Mathf.Clamp(warpPosition.y, 0, Screen.height));
+            ////Mantener el cursor en la pantalla de juego (de esta manera no se sale de los limites)
+            overflow = new Vector2(warpPosition.x % 1, warpPosition.y % 1);
+            ////Asignamos la posición al raton para que se mueva
+            Mouse.current.WarpCursorPosition(warpPosition);
+        }
+
 
         ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         guns[GameManager.Instance.GetGun()].transform.LookAt(ray.GetPoint(10));

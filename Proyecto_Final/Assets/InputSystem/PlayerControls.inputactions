@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInput",
+    "name": "PlayerControls",
     "maps": [
         {
             "name": "Player",
@@ -572,34 +572,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "MenuController",
-            "id": "81c28130-245e-47a9-a325-7bd0eccf0bec",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "6147b846-285d-4f57-9bd8-2c10cb1011b6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "b6f5de68-ae86-40d2-99af-b13b8f5de429",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
